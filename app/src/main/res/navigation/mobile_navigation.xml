@@ -3,23 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
-
+    app:startDestination="@id/nav_main">
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.fall2020androidproject.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
+        android:id="@+id/nav_main"
+        android:name="com.example.fall2020androidproject.fragments.MainFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_main" />
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.fall2020androidproject.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/nav_tone"
+        android:name="com.example.fall2020androidproject.fragments.ToneFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_tone" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.fall2020androidproject.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_comment"
+        android:name="com.example.fall2020androidproject.fragments.CommentFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_comment" />
 </navigation>
