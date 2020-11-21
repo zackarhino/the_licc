@@ -2,7 +2,12 @@ package com.example.fall2020androidproject.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +66,29 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.menuViewPager);
+        viewPager.setAdapter(new MenuViewPagerAdapter(getActivity().getSupportFragmentManager()));
+        return view;
+    }
+
+    class MenuViewPagerAdapter extends FragmentPagerAdapter{
+        public MenuViewPagerAdapter(@NonNull FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            switch (position){
+                case 0: return MenuImageFragment.newInstance(R.drawable.the_licc);
+                default: return MenuImageFragment.newInstance(0);
+            }
+        }
     }
 }
