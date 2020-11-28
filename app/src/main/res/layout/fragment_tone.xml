@@ -10,14 +10,17 @@
         android:id="@+id/toneTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Placeholder Text"
-        android:textAlignment="center" />
+        android:text="@string/menu_tone"
+        android:textAlignment="center"
+        android:textSize="@dimen/titleFontSize"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/toneDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Placeholder Text" />
+        android:text="This is where instuctions will go.\nIt will be formatted something like this."
+        android:textSize="@dimen/subtitleFontSize" />
 
     <GridView
         android:id="@+id/toneGenerator"

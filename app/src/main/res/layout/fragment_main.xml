@@ -10,14 +10,16 @@
         android:id="@+id/menuTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Placeholder Text"
-        android:textAlignment="center" />
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="@dimen/titleFontSize"
+        android:textStyle="bold" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/menuViewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="5">
+        android:layout_weight="4">
 
     </androidx.viewpager.widget.ViewPager>
 
@@ -25,8 +27,10 @@
         android:id="@+id/eventTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Placeholder Text"
-        android:textAlignment="center" />
+        android:text="@string/events"
+        android:textAlignment="center"
+        android:textSize="@dimen/subtitleFontSize"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/eventListView"

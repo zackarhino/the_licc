@@ -5,4 +5,10 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Font Sizes -->
+    <dimen name="titleFontSize">24sp</dimen>
+    <dimen name="subtitleFontSize">18sp</dimen>
+    <dimen name="textFontSize">16sp</dimen>
+    <dimen name="defaultPadding">10dp</dimen>
 </resources>
