@@ -1,4 +1,4 @@
-package com.example.fall2020androidproject.fragments;
+package com.example.fall2020androidproject.items;
 
 /**
  * An Event Item for the event list

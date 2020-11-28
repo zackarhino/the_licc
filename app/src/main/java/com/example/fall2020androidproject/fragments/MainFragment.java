@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -19,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.fall2020androidproject.R;
+import com.example.fall2020androidproject.items.EventItem;
 
 import java.util.ArrayList;
 
