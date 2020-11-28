@@ -10,4 +10,5 @@
     <dimen name="titleFontSize">24sp</dimen>
     <dimen name="subtitleFontSize">18sp</dimen>
     <dimen name="textFontSize">16sp</dimen>
+    <dimen name="defaultPadding">10dp</dimen>
 </resources>
