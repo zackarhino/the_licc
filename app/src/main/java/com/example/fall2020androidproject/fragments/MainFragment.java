@@ -68,7 +68,7 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.menuViewPager);
-        viewPager.setAdapter(new MenuViewPagerAdapter(getActivity().getSupportFragmentManager()));
+        viewPager.setAdapter(new MenuViewPagerAdapter(getChildFragmentManager()));
         return view;
     }
 
@@ -79,7 +79,7 @@ public class MainFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
 
         @NonNull
@@ -87,7 +87,9 @@ public class MainFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position){
                 case 0: return MenuImageFragment.newInstance(R.drawable.the_licc);
-                default: return MenuImageFragment.newInstance(0);
+                case 1: return MenuImageFragment.newInstance(R.drawable.the_licc_dance);
+                case 2: return MenuImageFragment.newInstance(R.drawable.the_licc_party);
+                default: return MenuImageFragment.newInstance(R.drawable.ic_baseline_music_note_24);
             }
         }
     }
