@@ -6,9 +6,12 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <!-- Font Sizes -->
-    <dimen name="titleFontSize">24sp</dimen>
-    <dimen name="subtitleFontSize">18sp</dimen>
-    <dimen name="textFontSize">16sp</dimen>
+    <!-- -->
     <dimen name="defaultPadding">10dp</dimen>
+    <dimen name="commentAuthorHeight">48dp</dimen>
+
+    <!-- Font Sizes -->
+    <dimen name="titleFontSize">26sp</dimen>
+    <dimen name="subtitleFontSize">16sp</dimen>
+    <dimen name="textFontSize">14sp</dimen>
 </resources>

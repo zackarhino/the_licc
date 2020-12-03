@@ -24,16 +24,6 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class CommentFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public CommentFragment() {
         // Required empty public constructor
     }
@@ -42,27 +32,17 @@ public class CommentFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment CommentFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CommentFragment newInstance(String param1, String param2) {
+    public static CommentFragment newInstance() {
         CommentFragment fragment = new CommentFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -74,10 +54,15 @@ public class CommentFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.comments);
 
         ArrayList<CommentItem> comments = new ArrayList<>();
-        comments.add(new CommentItem(R.drawable.ic_baseline_music_note_24, "person", "comment"));
-        comments.add(new CommentItem(0, "person2", "comment2"));
-        comments.add(new CommentItem(0, "person3", "comment3"));
-        comments.add(new CommentItem(0, "person4", "comment4"));
+
+        // Add the comment
+        comments.add(new CommentItem(R.drawable.pp_ls, getString(R.string.user_ls), getString(R.string.comment_ls_rad)));
+        comments.add(new CommentItem(R.drawable.pp_cl, getString(R.string.user_cl), getString(R.string.comment_cl_chicken)));
+        comments.add(new CommentItem(R.drawable.pp_an, getString(R.string.user_an), getString(R.string.comment_an_licc)));
+        comments.add(new CommentItem(R.drawable.pp_ls, getString(R.string.user_ls), getString(R.string.comment_ls_recommend)));
+        comments.add(new CommentItem(R.drawable.pp_sr, getString(R.string.user_sr), getString(R.string.comment_sr_review)));
+        comments.add(new CommentItem(R.drawable.pp_ls, getString(R.string.user_ls), getString(R.string.comment_ls_stan)));
+        comments.add(new CommentItem(R.drawable.pp_jl, getString(R.string.user_jl), getString(R.string.comment_jl_chicken)));
 
         CommentAdapter adapter = new CommentAdapter(comments);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -86,6 +71,10 @@ public class CommentFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Custom Adapter for the RecyclerView
+     * @author Zachary Allard
+     */
     class CommentAdapter extends RecyclerView.Adapter{
         ArrayList<CommentItem> comments = new ArrayList<>();
 
@@ -118,6 +107,11 @@ public class CommentFragment extends Fragment {
             return comments.size();
         }
     }
+
+    /**
+     * Custom ViewHolder for the RecyclerView
+     * @author Zachary Allard
+     */
     class CommentViewHolder extends RecyclerView.ViewHolder{
         protected ImageView image;
         protected TextView username;
