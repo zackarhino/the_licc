@@ -1,4 +1,7 @@
 <resources>
+    <!-- Leaving this here so it stops auto-generating it... -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- CONFIG -->
     <!-- Configuration strings -->
     <string name="app_name">The Licc</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -12,10 +15,19 @@
     <string name="menu_main">Home</string>
     <string name="menu_tone">Tone Generator</string>
     <string name="menu_comments">Comments</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- CONTENT -->
     <!-- App Text -->
     <string name="events">Upcoming Events</string>
     <string name="instructions"></string>
+
+    <!-- Events -->
+    <string name="event_mt_jazz">Microtonal Jazz Sesh</string>
+    <string name="event_ms">Modular Synth-stravaganza</string>
+    <string name="event_pr">Polyrhythmic Clicking Noises Live</string>
+    <string name="event_licc">I play the lick for 5 hours straight - Adam Neely Jr.</string>
+    <string name="event_tritone">Tritones: How to summon a devil</string>
+
+    <!-- Comments -->
+
 </resources>
