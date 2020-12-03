@@ -15,11 +15,23 @@
     <string name="menu_main">Home</string>
     <string name="menu_tone">Tone Generator</string>
     <string name="menu_comments">Comments</string>
+    <string name="menu_about">About</string>
 
     <!-- CONTENT -->
     <!-- App Text -->
     <string name="events">Upcoming Events</string>
+    <string name="creditText">All code and artwork created by Zachary Allard</string>
+    <string name="contactText">Contact us:</string>
+    <string name="socialText">Check us out on social media:</string>
     <string name="instructions"></string>
+
+    <!-- Buttons -->
+    <string name="button_email">email</string>
+    <string name="button_map">locate</string>
+    <string name="button_phone">call</string>
+    <string name="button_web">browse</string>
+    <string name="button_twitter">@twitter</string>
+    <string name="button_insta">@instagram</string>
 
     <!-- Events -->
     <string name="event_mt_jazz">Microtonal Jazz Sesh</string>

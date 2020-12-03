@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.AboutFragment">
+
+    <TextView
+        android:id="@+id/aboutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/menu_about"
+        android:textAlignment="center"
+        android:textSize="@dimen/titleFontSize"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/creditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:padding="@dimen/defaultPadding"
+        android:text="@string/creditText"
+        android:textAlignment="center"
+        android:textSize="@dimen/subtitleFontSize" />
+
+    <TextView
+        android:id="@+id/contactText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:padding="@dimen/defaultPadding"
+        android:text="@string/contactText"
+        android:textSize="@dimen/subtitleFontSize" />
+
+    <LinearLayout
+        android:id="@+id/contactRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/emailButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_weight="0.5"
+            android:padding="@dimen/defaultPadding"
+            android:text="@string/button_email" />
+
+        <Button
+            android:id="@+id/phoneButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_weight="0.5"
+            android:padding="@dimen/defaultPadding"
+            android:text="@string/button_phone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contactRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/webButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_weight="0.5"
+            android:padding="@dimen/defaultPadding"
+            android:text="@string/button_web" />
+
+        <Button
+            android:id="@+id/mapButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_weight="0.5"
+            android:padding="@dimen/defaultPadding"
+            android:text="@string/button_map" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/socialText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:padding="@dimen/defaultPadding"
+        android:text="@string/socialText"
+        android:textSize="@dimen/subtitleFontSize" />
+
+    <LinearLayout
+        android:id="@+id/socialRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/twitterButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_weight="0.5"
+            android:padding="@dimen/defaultPadding"
+            android:text="@string/button_twitter" />
+
+        <Button
+            android:id="@+id/instaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_weight="0.5"
+            android:padding="@dimen/defaultPadding"
+            android:text="@string/button_insta" />
+    </LinearLayout>
+
+</LinearLayout>
