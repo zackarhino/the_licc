@@ -56,10 +56,13 @@ public class CommentFragment extends Fragment {
         ArrayList<CommentItem> comments = new ArrayList<>();
 
         // Add the comment
-        comments.add(new CommentItem(R.drawable.ic_baseline_music_note_24, "person", "comment"));
-        comments.add(new CommentItem(0, "person2", "comment2"));
-        comments.add(new CommentItem(0, "person3", "comment3"));
-        comments.add(new CommentItem(0, "person4", "comment4"));
+        comments.add(new CommentItem(R.drawable.pp_ls, getString(R.string.user_ls), getString(R.string.comment_ls_rad)));
+        comments.add(new CommentItem(R.drawable.pp_cl, getString(R.string.user_cl), getString(R.string.comment_cl_chicken)));
+        comments.add(new CommentItem(R.drawable.pp_an, getString(R.string.user_an), getString(R.string.comment_an_licc)));
+        comments.add(new CommentItem(R.drawable.pp_ls, getString(R.string.user_ls), getString(R.string.comment_ls_recommend)));
+        comments.add(new CommentItem(R.drawable.pp_sr, getString(R.string.user_sr), getString(R.string.comment_sr_review)));
+        comments.add(new CommentItem(R.drawable.pp_ls, getString(R.string.user_ls), getString(R.string.comment_ls_stan)));
+        comments.add(new CommentItem(R.drawable.pp_jl, getString(R.string.user_jl), getString(R.string.comment_jl_chicken)));
 
         CommentAdapter adapter = new CommentAdapter(comments);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

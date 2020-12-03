@@ -28,6 +28,24 @@
     <string name="event_licc">I play the lick for 5 hours straight - Adam Neely Jr.</string>
     <string name="event_tritone">Tritones: How to summon a devil</string>
 
+    <!-- Users -->
+    <string name="user_cl">chickenlover2000</string>
+    <string name="user_jl">jazzlover2077</string>
+    <string name="user_ls">the_licc_stan</string>
+    <string name="user_sr">SeriousReviewer</string>
+    <string name="user_an">adam_neely_jr</string>
+
     <!-- Comments -->
+    <string name="comment_ls_rad">The licc isn\'t just cool, it\'s RAD cool!</string>
+    <string name="comment_ls_recommend">The licc is the best jazz joint in Nowheresville, Nevada! would recommend.</string>
+    <string name="comment_ls_stan">I just want to say how much I love the licc and everything it stands for.</string>
+    <string name="comment_cl_chicken">WARNING: This is NOT the chicc! The chicken here is mediocre at best. 0/10.</string>
+    <string name="comment_an_licc">da-na naa-na naaaa na naa</string>
+    <string name="comment_jl_chicken">i just like the chicken</string>
+    <string name="comment_sr_review">To whom it may concern,\nThe following is my formal review for "the licc" establishment located in Nevada. It has come to my attention that
+        the preponderousnous the aforementioned esablishment has exceed the maxiumicious limit of the upper echelon when it comes to
+        limits regarding the territragic outburst of the dastardly COVID-20 supervirus. Due to the unwitting nature of the supervirus\'s spreadability,
+        I mustn\'t regard this business as operating under the egalitarian laws that we not only follow, but adhere to and abide by today.
+        Given the circumstances in which we reside and this building operates, I simply CANNOT see that the people support this business or its chicken.\n\n-\tMr. Serious Reviewer</string>
 
 </resources>
