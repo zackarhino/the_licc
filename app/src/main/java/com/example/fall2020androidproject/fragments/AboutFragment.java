@@ -65,6 +65,17 @@ public class AboutFragment extends Fragment {
                 }
             }
         });
+        phoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri number = Uri.parse("tel:+12262465153");
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(number);
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(intent);
+                }
+            }
+        });
 
         return view;
     }
