@@ -1,5 +1,7 @@
 package com.example.fall2020androidproject.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.fall2020androidproject.R;
 
@@ -40,6 +43,29 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
+
+        Button emailButton = view.findViewById(R.id.emailButton);
+        Button phoneButton = view.findViewById(R.id.phoneButton);
+        Button webButton = view.findViewById(R.id.webButton);
+        Button mapButton = view.findViewById(R.id.mapButton);
+
+        Button twitterButton = view.findViewById(R.id.twitterButton);
+        Button instaButton = view.findViewById(R.id.instaButton);
+
+        emailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri protocol = Uri.parse("mailto:");
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(protocol);
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.nav_header_subtitle)});
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(intent);
+                }
+            }
+        });
+
+        return view;
     }
 }
