@@ -86,6 +86,17 @@ public class AboutFragment extends Fragment {
                 }
             }
         });
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri location = Uri.parse("geo:0,0?q=41.342546,-117.702718(Nowheresville, Nevada)");
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(location);
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(intent);
+                }
+            }
+        });
 
         return view;
     }
