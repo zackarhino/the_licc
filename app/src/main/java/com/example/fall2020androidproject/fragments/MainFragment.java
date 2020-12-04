@@ -1,21 +1,35 @@
 package com.example.fall2020androidproject.fragments;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.provider.CalendarContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fall2020androidproject.R;
 import com.example.fall2020androidproject.items.EventItem;
@@ -23,12 +37,16 @@ import com.example.fall2020androidproject.items.EventItem;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class MainFragment extends Fragment {
+    // Used for checking permissions
+    private final int PERMISSION_WRITE_CALENDAR = 100;
 
     public MainFragment() {
         // Required empty public constructor
@@ -72,6 +90,44 @@ public class MainFragment extends Fragment {
         events.add(new EventItem(getString(R.string.event_tritone), "5-7-2077"));
 
         listView.setAdapter(new MenuListViewAdapter(getContext(), events));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("Permissions","Event clicked. Event: " + events.get(position).getEventName());
+                // Check for / attempt to get access to permissions
+                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED){
+                    Log.d("Permissions","Permissions not granted. Attempting to get permissions.");
+                    if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.WRITE_CALENDAR)){
+                        Log.d("Permissions","Permissions previously denied. Attempting to show an alert.");
+                        final AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                        alertDialog.setTitle("Add Calendar Event");
+                        alertDialog.setMessage("Requesting permission to add event to calendar");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                alertDialog.dismiss();
+                                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_CALENDAR}, PERMISSION_WRITE_CALENDAR);
+                            }
+                        });
+                        alertDialog.show();
+                    }else{
+                        Log.d("Permissions","Requesting permissions in else block.");
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_CALENDAR}, PERMISSION_WRITE_CALENDAR);
+                    }
+                }else{
+                    // Permissions are valid
+                    Log.d("Permissions","Permissions granted.");
+                    // Add a calendar event
+                    Uri uri = Uri.parse("content://com.android.calendar/events");
+                    Intent intent = new Intent(Intent.ACTION_INSERT, uri);
+                    intent.putExtra(CalendarContract.Events.TITLE, events.get(position).getEventName());
+                    intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "the licc");
+                    if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
 
         return view;
     }
@@ -98,11 +154,14 @@ public class MainFragment extends Fragment {
             eventName.setText(item.getEventName());
             eventDate.setText(item.getEventDate());
 
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.item_animation_slide_in);
+            convertView.startAnimation(animation);
+
             return convertView;
         }
     }
     /**
-     * Custom Adapter for the ListView
+     * Custom Adapter for the ViewPager
      * @author Zachary Allard
      */
     static class MenuViewPagerAdapter extends FragmentPagerAdapter{

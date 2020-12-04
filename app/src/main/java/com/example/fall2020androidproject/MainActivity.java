@@ -1,14 +1,11 @@
 package com.example.fall2020androidproject;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Debug;
-import android.view.MenuItem;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final int PERMISSION_WRITE_CALENDAR = 100;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_main, R.id.nav_tone, R.id.nav_comment)
+                R.id.nav_main, R.id.nav_tone, R.id.nav_comment, R.id.nav_about)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -57,4 +55,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }
