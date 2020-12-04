@@ -38,6 +38,13 @@
         android:id="@+id/eventListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3" />
+        android:layout_weight="3"
+        android:divider="@android:color/holo_blue_dark"
+        android:dividerHeight="1dip"
+        android:layoutAnimation="@anim/listview_layout_animation"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:padding="@dimen/defaultPadding"
+        android:scrollbars="none" />
 
 </LinearLayout>

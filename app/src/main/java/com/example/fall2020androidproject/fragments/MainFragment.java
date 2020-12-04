@@ -23,6 +23,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -152,11 +154,14 @@ public class MainFragment extends Fragment {
             eventName.setText(item.getEventName());
             eventDate.setText(item.getEventDate());
 
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.item_animation_slide_in);
+            convertView.startAnimation(animation);
+
             return convertView;
         }
     }
     /**
-     * Custom Adapter for the ListView
+     * Custom Adapter for the ViewPager
      * @author Zachary Allard
      */
     static class MenuViewPagerAdapter extends FragmentPagerAdapter{

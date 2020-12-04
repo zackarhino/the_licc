@@ -18,6 +18,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/comments"
+        android:layoutAnimation="@anim/recyclerview_layout_animation"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
