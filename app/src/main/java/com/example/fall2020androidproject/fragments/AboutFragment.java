@@ -98,6 +98,17 @@ public class AboutFragment extends Fragment {
             }
         });
 
+
+        twitterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https:/www.twitter.com/zackarhino");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
         return view;
     }
 }
