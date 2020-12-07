@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.fall2020androidproject.MainActivity;
 import com.example.fall2020androidproject.R;
 
 /**
@@ -54,6 +55,8 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about, container, false);
+
+        MainActivity.fab.hide();
 
         Button emailButton = view.findViewById(R.id.emailButton);
         Button phoneButton = view.findViewById(R.id.phoneButton);

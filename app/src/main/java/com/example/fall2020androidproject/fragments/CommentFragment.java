@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.fall2020androidproject.MainActivity;
 import com.example.fall2020androidproject.R;
 import com.example.fall2020androidproject.items.CommentItem;
 
@@ -59,6 +60,8 @@ public class CommentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_comment, container, false);
+
+        MainActivity.fab.hide();
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.comments);
 

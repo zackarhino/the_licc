@@ -33,6 +33,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fall2020androidproject.MainActivity;
 import com.example.fall2020androidproject.R;
 import com.example.fall2020androidproject.items.EventItem;
 
@@ -82,6 +83,8 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        MainActivity.fab.hide();
 
         // ViewPager Code
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.menuViewPager);

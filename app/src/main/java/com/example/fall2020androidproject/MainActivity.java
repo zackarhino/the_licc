@@ -2,15 +2,21 @@ package com.example.fall2020androidproject;
 
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
+import android.graphics.fonts.Font;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,20 +30,28 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     NavController navController;
 
+    public static FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        TextView toolbarTitle = (TextView) toolbar.getChildAt(0); // Get the toolbar title
+        Typeface toolbarTypeface = ResourcesCompat.getFont(this, R.font.gingerly);
+        toolbarTitle.setTypeface(toolbarTypeface);
+        toolbarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.toolbarTitleFontSize));
 
+        fab = findViewById(R.id.fab);
+
+        // Default preferences
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getString(R.string.key_show_button), true);
         editor.putInt(getString(R.string.key_play_mode), 0);
         editor.putBoolean(getString(R.string.key_party_mode), false);
         editor.apply();
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
