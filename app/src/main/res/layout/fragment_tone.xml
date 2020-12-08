@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,11 +21,15 @@
         android:id="@+id/toneDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/defaultPadding"
         android:text="This is where instuctions will go.\nIt will be formatted something like this."
         android:textSize="@dimen/subtitleFontSize" />
 
-    <GridView
-        android:id="@+id/toneGenerator"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toneGeneratorContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

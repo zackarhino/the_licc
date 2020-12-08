@@ -11,6 +11,7 @@
     <dimen name="commentAuthorHeight">48dp</dimen>
 
     <!-- Font Sizes -->
+    <dimen name="toolbarTitleFontSize">17sp</dimen>
     <dimen name="titleFontSize">26sp</dimen>
     <dimen name="subtitleFontSize">16sp</dimen>
     <dimen name="textFontSize">14sp</dimen>
