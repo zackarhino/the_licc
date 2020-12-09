@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/eggshell"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".fragments.ToneFragment">
 
@@ -30,8 +31,105 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toneGeneratorContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/defaultPadding"
+        android:layout_marginTop="@dimen/defaultPadding"
+        android:layout_marginEnd="@dimen/defaultPadding"
+        android:layout_marginBottom="@dimen/toneGeneratorContainerMarginBottom"
+        android:background="@color/white"
+        android:backgroundTint="#8C0099CC"
+        android:elevation="@dimen/elevation_tone_container">
 
+        <LinearLayout
+            android:id="@+id/shapeButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/toneGeneratorButtonContainerMargins"
+            android:elevation="@dimen/elevation_tone_buttons"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/shapeSine"
+                style="@null"
+                android:layout_width="@dimen/toneGeneratorButtonHeight"
+                android:layout_height="@dimen/toneGeneratorButtonHeight"
+                android:layout_margin="@dimen/toneGeneratorButtonMargins"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/sine"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/toneGeneratorButtonHeight"
+                app:iconTint="@color/black" />
+
+            <Button
+                android:id="@+id/shapeTriangle"
+                style="@null"
+                android:layout_width="@dimen/toneGeneratorButtonHeight"
+                android:layout_height="@dimen/toneGeneratorButtonHeight"
+                android:layout_margin="@dimen/toneGeneratorButtonMargins"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/triangle"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/toneGeneratorButtonHeight"
+                app:iconTint="@color/black" />
+
+            <Button
+                android:id="@+id/shapeSawtooth"
+                style="@null"
+                android:layout_width="@dimen/toneGeneratorButtonHeight"
+                android:layout_height="@dimen/toneGeneratorButtonHeight"
+                android:layout_margin="@dimen/toneGeneratorButtonMargins"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/sawtooth"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/toneGeneratorButtonHeight"
+                app:iconTint="@color/black" />
+
+            <Button
+                android:id="@+id/shapePulse"
+                style="@null"
+                android:layout_width="@dimen/toneGeneratorButtonHeight"
+                android:layout_height="@dimen/toneGeneratorButtonHeight"
+                android:layout_margin="@dimen/toneGeneratorButtonMargins"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/pulse"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/toneGeneratorButtonHeight"
+                app:iconTint="@color/black" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

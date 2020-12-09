@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:elevation="@dimen/elevation_ui"
             app:popupTheme="@style/Theme.Fall2020AndroidProject.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -29,8 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/licc_dark_blue"
-        app:elevation="6dp"
+        app:backgroundTint="@color/licc_blue"
+        app:elevation="@dimen/elevation_ui"
         app:pressedTranslationZ="12dp"
         app:srcCompat="@drawable/ic_baseline_music_note_24"
         tools:ignore="ContentDescription" />
