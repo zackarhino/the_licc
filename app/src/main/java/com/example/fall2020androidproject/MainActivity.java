@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getString(R.string.key_show_button), true);
-        editor.putInt(getString(R.string.key_play_mode), 0);
+        editor.putInt(getString(R.string.key_play_mode), ToneFragment.PLAY_MODES.ONE_SHOT);
         editor.putBoolean(getString(R.string.key_party_mode), false);
         editor.apply();
 

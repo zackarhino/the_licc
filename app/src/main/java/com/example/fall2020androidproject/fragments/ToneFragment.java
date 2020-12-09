@@ -1,6 +1,7 @@
 package com.example.fall2020androidproject.fragments;
 
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.fall2020androidproject.MainActivity;
 import com.example.fall2020androidproject.R;
@@ -53,6 +55,12 @@ public class ToneFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tone, container, false);
+
+        TextView title = view.findViewById(R.id.toneTitle);
+        TextView instructions = view.findViewById(R.id.toneDescription);
+        // Hiding the title and instructions when in landscape mode
+        title.setVisibility((getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) ? View.GONE : View.VISIBLE);
+        instructions.setVisibility((getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) ? View.GONE : View.VISIBLE);
 
         SharedPreferences sharedPreferences = getActivity().getPreferences(MODE_PRIVATE);
         if(sharedPreferences.getBoolean(getString(R.string.key_show_button), true)){
