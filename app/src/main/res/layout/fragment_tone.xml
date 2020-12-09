@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/menu_tone"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="@dimen/titleFontSize"
         android:textStyle="bold" />
 
@@ -22,7 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/defaultPadding"
-        android:text="This is where instuctions will go.\nIt will be formatted something like this."
+        android:text="@string/instructions"
+        android:textColor="@color/black"
         android:textSize="@dimen/subtitleFontSize" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

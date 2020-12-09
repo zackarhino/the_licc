@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/defaultPadding"
         android:paddingBottom="0dp"
+        android:textColor="@color/black"
         android:textSize="@dimen/subtitleFontSize"
         android:textStyle="bold" />
 
@@ -22,6 +23,7 @@
         android:paddingStart="0dp"
         android:paddingEnd="@dimen/defaultPadding"
         android:textAlignment="textEnd"
+        android:textColor="@color/licc_blue"
         android:textSize="@dimen/textFontSize"
         android:textStyle="italic" />
 </LinearLayout>

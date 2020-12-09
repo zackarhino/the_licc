@@ -49,8 +49,6 @@ public class ToneFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getPreferences(MODE_PRIVATE);
         if(sharedPreferences.getBoolean(getString(R.string.key_show_button), true)){
             MainActivity.fab.show();
-        }else {
-            MainActivity.fab.hide();
         }
 
         return view;
