@@ -20,9 +20,17 @@ import static android.content.Context.MODE_PRIVATE;
  * create an instance of this fragment.
  */
 public class ToneFragment extends Fragment {
+    public enum PLAY_MODES{;
+        public static final int CONTINUOUS = 1;
+        public static final int ONE_SHOT = 2;
+        public static final int HOLD = 3;
+    }
+
     public ToneFragment() {
         // Required empty public constructor
     }
+    
+
 
     /**
      * Use this factory method to create a new instance of
