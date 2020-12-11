@@ -30,11 +30,11 @@
     <!-- CONTENT -->
     <!-- App Text -->
     <string name="events">Upcoming Events</string>
-    <string name="creditText">App code and artwork created by Zachary Allard\nTone Generator code modified from https://github.com/stefanhaustein/android-tone-generator under the Apache 2.0 license</string>
+    <string name="creditText">App code and artwork created by Zachary Allard\nTone Generator code modified from\nhttps://github.com/stefanhaustein/android-tone-generator under the Apache 2.0 license</string>
     <string name="contactText">Contact us:</string>
     <string name="socialText">Check us out on social media:</string>
-    <string name="instructions">On this page, you can help find inspiration for your music by using our state-of-the-line tone generator! (ooh!)\n
-    To use it, simply TODO: Add instructions</string>
+    <string name="instructions">On this page, you can help find inspiration for your music by using our state-of-the-line tone generator!\n\n
+    To use it, simply pick a shape, a volume, and a pitch. You can change how your tone is played by using the settings menu in the top right.</string>
     <string name="volumeTextView">Volume</string>
     <string name="pitchTextView">Pitch</string>
 
@@ -43,8 +43,8 @@
     <string name="button_map">locate</string>
     <string name="button_phone">call</string>
     <string name="button_web">browse</string>
-    <string name="button_twitter">@twitter</string>
-    <string name="button_insta">@instagram</string>
+    <string name="button_twitter">\@twitter</string>
+    <string name="button_insta">\@instagram</string>
 
     <!-- Events -->
     <string name="event_mt_jazz">Microtonal Jazz Sesh</string>
@@ -52,6 +52,8 @@
     <string name="event_pr">Polyrhythmic Clicking Noises Live</string>
     <string name="event_licc">I play the lick for 5 hours straight</string>
     <string name="event_tritone">Tritones: How to summon a devil</string>
+    <string name="event_dissonance">Dissonance vs. Consonance</string>
+    <string name="event_mode">I don\'t particularly like modes a lot</string>
 
     <!-- Users -->
     <string name="user_cl">chickenlover2000</string>
