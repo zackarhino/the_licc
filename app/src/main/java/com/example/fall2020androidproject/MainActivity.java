@@ -3,7 +3,9 @@ package com.example.fall2020androidproject;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.fonts.Font;
 import android.media.AudioFormat;
 import android.media.AudioManager;
@@ -25,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -42,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static FloatingActionButton fab;
 
+    // Party settings
+    static final int partyTime = 500;
+    static ColorDrawable[] partyColors;
+    public int colorPos = 0;
+    static Thread partyThread;
+    public static boolean partyOn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +62,18 @@ public class MainActivity extends AppCompatActivity {
         Typeface toolbarTypeface = ResourcesCompat.getFont(this, R.font.gingerly);
         toolbarTitle.setTypeface(toolbarTypeface);
         toolbarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.toolbarTitleFontSize));
-
         content = findViewById(R.id.content);
+
+        // The colors that will be cycled through in party mode
+        partyColors = new ColorDrawable[]{
+            new ColorDrawable(getResources().getColor(R.color.red, getTheme())),
+            new ColorDrawable(getResources().getColor(R.color.orange, getTheme())),
+            new ColorDrawable(getResources().getColor(R.color.yellow, getTheme())),
+            new ColorDrawable(getResources().getColor(R.color.green, getTheme())),
+            new ColorDrawable(getResources().getColor(R.color.blue, getTheme())),
+            new ColorDrawable(getResources().getColor(R.color.indigo, getTheme())),
+            new ColorDrawable(getResources().getColor(R.color.violet, getTheme()))
+        };
 
         fab = findViewById(R.id.fab);
 
@@ -107,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
                 editor.apply();
                 // Setting fab visibilty to the value that was just written to the SharedPreferences
                 setFabVisibility(sharedPreferences.getBoolean(getString(R.string.key_show_button), true));
-                Toast.makeText(this, "Show button: " + sharedPreferences.getBoolean(getString(R.string.key_show_button), false), Toast.LENGTH_SHORT).show();
                 break;
             case  R.id.action_play_mode_1:
                 // Play mode 1: Continuous
@@ -130,12 +148,44 @@ public class MainActivity extends AppCompatActivity {
                 editor.putBoolean(getString(R.string.key_show_button), true); // Showing the button
                 editor.apply();
                 ToneFragment.setFabListener(ToneFragment.PLAY_MODES.HOLD);
+                setFabVisibility(true);
                 break;
             case R.id.action_party_mode:
                 // Flip the boolean
                 editor.putBoolean(getString(R.string.key_party_mode), !sharedPreferences.getBoolean(getString(R.string.key_party_mode), false));
                 editor.apply();
-                setFabVisibility(true);
+
+                Log.d("Thread", "Status of party mode: " + sharedPreferences.getBoolean(getString(R.string.key_party_mode), false));
+
+                if(sharedPreferences.getBoolean(getString(R.string.key_party_mode), false)){
+                    partyOn = true;
+                    // Cycling through colors in party mode
+                    partyThread = new Thread("partyThread"){
+                        final ActionBar actionBar = getSupportActionBar();
+                        @Override
+                        public void run() {
+                            while (partyOn){
+                                actionBar.setBackgroundDrawable(partyColors[colorPos]);
+                                try {
+                                    Thread.sleep(partyTime);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                if(colorPos >= partyColors.length-1){
+                                    colorPos = 0;
+                                }else{
+                                    colorPos++;
+                                }
+
+                            }
+                        }
+                    };
+                    partyThread.start();
+                }else {
+                    partyOn = false;
+                    final ActionBar actionBar = getSupportActionBar();
+                    actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.licc_blue, getTheme())));
+                }
                 break;
             default:
                 Log.d("Menu", "Unrecognized menu item");
@@ -151,6 +201,10 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    /**
+     * Sets visibility of fab
+     * @param isVisible Visibility of fab
+     */
     public void setFabVisibility(boolean isVisible){
         if(isVisible){
             fab.show();

@@ -196,6 +196,11 @@ public class ToneFragment extends Fragment {
     }
 
     // Methods
+
+    /**
+     * Sets the fab listener based on the play mode constant that is passed
+     * @param listenerType The listener type to pass
+     */
     @SuppressLint("ClickableViewAccessibility")
     public static void setFabListener(int listenerType){
         // Unsetting any listeners
@@ -248,7 +253,7 @@ public class ToneFragment extends Fragment {
     }
 
     /**
-     * Stops any tone that is currently playing
+     * Stops any tone that is currently playings
      */
     public static void stopTone(){
         // Ending tone if there are any playing
