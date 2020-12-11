@@ -1,6 +1,7 @@
 package com.example.fall2020androidproject.fragments;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,8 +38,11 @@ import com.example.fall2020androidproject.MainActivity;
 import com.example.fall2020androidproject.R;
 import com.example.fall2020androidproject.items.EventItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
 
@@ -100,6 +104,8 @@ public class MainFragment extends Fragment {
         events.add(new EventItem(getString(R.string.event_ms), "3-25-2077"));
         events.add(new EventItem(getString(R.string.event_licc), "5-1-2077"));
         events.add(new EventItem(getString(R.string.event_tritone), "5-7-2077"));
+        events.add(new EventItem(getString(R.string.event_mode), "7-2-2077"));
+        events.add(new EventItem(getString(R.string.event_dissonance), "7-8-2077"));
 
         listView.setAdapter(new MenuListViewAdapter(getContext(), events));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
