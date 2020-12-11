@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/menu_tone"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="@dimen/titleFontSize"
         android:textStyle="bold" />
 
@@ -22,14 +23,166 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/defaultPadding"
-        android:text="This is where instuctions will go.\nIt will be formatted something like this."
+        android:text="@string/instructions"
+        android:textColor="@color/black"
         android:textSize="@dimen/subtitleFontSize" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toneGeneratorContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/defaultPadding"
+        android:layout_marginTop="@dimen/defaultPadding"
+        android:layout_marginEnd="@dimen/defaultPadding"
+        android:layout_marginBottom="@dimen/toneGeneratorContainerMarginBottom"
+        android:paddingBottom="@dimen/defaultPadding"
+        android:background="@color/white"
+        android:backgroundTint="#8C0099CC"
+        android:elevation="@dimen/elevation_tone_container">
 
+        <LinearLayout
+            android:id="@+id/shapeButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/toneGeneratorButtonContainerMargins"
+            android:elevation="@dimen/elevation_tone_buttons"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <Button
+                android:id="@+id/shapeSine"
+                style="@null"
+                android:layout_width="@dimen/toneGeneratorButtonHeight"
+                android:layout_height="@dimen/toneGeneratorButtonHeight"
+                android:layout_margin="@dimen/toneGeneratorButtonMargins"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                android:backgroundTint="@color/licc_dark_blue"
+                app:icon="@drawable/sine"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/toneGeneratorButtonHeight"
+                app:iconTint="@color/black" />
+
+            <Button
+                android:id="@+id/shapeTriangle"
+                style="@null"
+                android:layout_width="@dimen/toneGeneratorButtonHeight"
+                android:layout_height="@dimen/toneGeneratorButtonHeight"
+                android:layout_margin="@dimen/toneGeneratorButtonMargins"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                android:backgroundTint="@color/licc_blue"
+                app:icon="@drawable/triangle"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/toneGeneratorButtonHeight"
+                app:iconTint="@color/black" />
+
+            <Button
+                android:id="@+id/shapeSawtooth"
+                style="@null"
+                android:layout_width="@dimen/toneGeneratorButtonHeight"
+                android:layout_height="@dimen/toneGeneratorButtonHeight"
+                android:layout_margin="@dimen/toneGeneratorButtonMargins"
+                android:layout_weight="1"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                android:backgroundTint="@color/licc_blue"
+                app:icon="@drawable/sawtooth"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/toneGeneratorButtonHeight"
+                app:iconTint="@color/black" />
+
+            <Button
+                android:id="@+id/shapePulse"
+                style="@null"
+                android:layout_width="@dimen/toneGeneratorButtonHeight"
+                android:layout_height="@dimen/toneGeneratorButtonHeight"
+                android:layout_margin="@dimen/toneGeneratorButtonMargins"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                android:backgroundTint="@color/licc_blue"
+                app:icon="@drawable/pulse"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/toneGeneratorButtonHeight"
+                app:iconTint="@color/black" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/volumeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/toneGeneratorSpacingHeight"
+            android:text="@string/volumeTextView"
+            android:textColor="@color/black"
+            android:textSize="@dimen/subtitleFontSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shapeButtons" />
+
+        <SeekBar
+            android:id="@+id/volume"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toneGeneratorSpacingHeight"
+            android:layout_margin="@dimen/defaultPadding"
+            android:background="@null"
+            android:progress="50"
+            android:progressDrawable="@drawable/progress_bar_grey"
+            android:progressTint="@color/licc_dark_blue"
+            android:thumb="@drawable/thumb_note"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/volumeTextView" />
+
+        <TextView
+            android:id="@+id/pitchTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/toneGeneratorSpacingHeight"
+            android:text="@string/pitchTextView"
+            android:textColor="@color/black"
+            android:textSize="@dimen/subtitleFontSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/volume" />
+
+        <SeekBar
+            android:id="@+id/pitch"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toneGeneratorSpacingHeight"
+            android:layout_margin="@dimen/defaultPadding"
+            android:background="@null"
+            android:progress="50"
+            android:progressDrawable="@drawable/progress_bar_grey"
+            android:progressTint="@color/licc_dark_blue"
+            android:thumb="@drawable/thumb_note"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pitchTextView"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

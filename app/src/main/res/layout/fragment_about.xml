@@ -14,6 +14,7 @@
         android:layout_weight="1"
         android:text="@string/menu_about"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="@dimen/titleFontSize"
         android:textStyle="bold" />
 
@@ -25,6 +26,7 @@
         android:padding="@dimen/defaultPadding"
         android:text="@string/creditText"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="@dimen/subtitleFontSize" />
 
     <TextView
@@ -35,6 +37,7 @@
         android:gravity="center_vertical"
         android:padding="@dimen/defaultPadding"
         android:text="@string/contactText"
+        android:textColor="@color/black"
         android:textSize="@dimen/subtitleFontSize" />
 
     <LinearLayout
@@ -47,22 +50,24 @@
         <Button
             android:id="@+id/emailButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultPadding"
             android:layout_marginEnd="@dimen/defaultPadding"
             android:layout_weight="0.5"
             android:padding="@dimen/defaultPadding"
-            android:text="@string/button_email" />
+            android:text="@string/button_email"
+            android:textColor="@color/eggshell" />
 
         <Button
             android:id="@+id/phoneButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultPadding"
             android:layout_marginEnd="@dimen/defaultPadding"
             android:layout_weight="0.5"
             android:padding="@dimen/defaultPadding"
-            android:text="@string/button_phone" />
+            android:text="@string/button_phone"
+            android:textColor="@color/eggshell" />
     </LinearLayout>
 
     <LinearLayout
@@ -75,22 +80,24 @@
         <Button
             android:id="@+id/webButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultPadding"
             android:layout_marginEnd="@dimen/defaultPadding"
             android:layout_weight="0.5"
             android:padding="@dimen/defaultPadding"
-            android:text="@string/button_web" />
+            android:text="@string/button_web"
+            android:textColor="@color/eggshell" />
 
         <Button
             android:id="@+id/mapButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultPadding"
             android:layout_marginEnd="@dimen/defaultPadding"
             android:layout_weight="0.5"
             android:padding="@dimen/defaultPadding"
-            android:text="@string/button_map" />
+            android:text="@string/button_map"
+            android:textColor="@color/eggshell" />
     </LinearLayout>
 
     <TextView
@@ -101,6 +108,7 @@
         android:gravity="center_vertical"
         android:padding="@dimen/defaultPadding"
         android:text="@string/socialText"
+        android:textColor="@color/black"
         android:textSize="@dimen/subtitleFontSize" />
 
     <LinearLayout
@@ -113,22 +121,24 @@
         <Button
             android:id="@+id/twitterButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultPadding"
             android:layout_marginEnd="@dimen/defaultPadding"
             android:layout_weight="0.5"
             android:padding="@dimen/defaultPadding"
-            android:text="@string/button_twitter" />
+            android:text="@string/button_twitter"
+            android:textColor="@color/eggshell" />
 
         <Button
             android:id="@+id/instaButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultPadding"
             android:layout_marginEnd="@dimen/defaultPadding"
             android:layout_weight="0.5"
             android:padding="@dimen/defaultPadding"
-            android:text="@string/button_insta" />
+            android:text="@string/button_insta"
+            android:textColor="@color/eggshell" />
     </LinearLayout>
 
 </LinearLayout>

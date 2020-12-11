@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/licc_blue</item>
         <item name="colorPrimaryVariant">@color/licc_dark_blue</item>
-        <item name="colorOnPrimary">#ff33b5e5</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/eggshell</item>
         <item name="colorSecondaryVariant">@color/eggshell</item>

@@ -31,6 +31,7 @@
             android:paddingStart="@dimen/defaultPadding"
             android:paddingEnd="0dp"
             android:textAlignment="textStart"
+            android:textColor="@color/black"
             android:textSize="@dimen/subtitleFontSize"
             android:textStyle="bold" />
 
@@ -42,6 +43,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:padding="@dimen/defaultPadding"
+        android:textColor="@color/black"
         android:textSize="@dimen/textFontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -30,10 +30,13 @@
     <!-- CONTENT -->
     <!-- App Text -->
     <string name="events">Upcoming Events</string>
-    <string name="creditText">All code and artwork created by Zachary Allard</string>
+    <string name="creditText">App code and artwork created by Zachary Allard\nTone Generator code modified from https://github.com/stefanhaustein/android-tone-generator under the Apache 2.0 license</string>
     <string name="contactText">Contact us:</string>
     <string name="socialText">Check us out on social media:</string>
-    <string name="instructions"></string>
+    <string name="instructions">On this page, you can help find inspiration for your music by using our state-of-the-line tone generator! (ooh!)\n
+    To use it, simply TODO: Add instructions</string>
+    <string name="volumeTextView">Volume</string>
+    <string name="pitchTextView">Pitch</string>
 
     <!-- Buttons -->
     <string name="button_email">email</string>
