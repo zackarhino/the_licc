@@ -226,9 +226,9 @@ public class ToneGenerator {
                             } while (dt < releaseTimeNs);
                         }
 
-                        Thread.sleep(500);
+                        Thread.sleep(1);
                         audioTrack.stop();
-                        Thread.sleep(500);
+                        Thread.sleep(1);
                     } catch (InterruptedException e) {
                         endRequested = true;
                     } finally {
