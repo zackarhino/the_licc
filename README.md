@@ -23,8 +23,8 @@ If social lives aren't your thing, maybe you play around with the meat-and-potat
 To use it, simply drag around the sliders until you find something that tickles your fancy. Consider your fancy tickled.
 
 
-### The licc is a place for musicians of all types, as long as your music is weird and made using obscure musical concepts!
-#### Come visit whenever you want to have a good time!
+#### the licc is a place for musicians of all types, as long as your music is weird and made using obscure musical concepts!
+### Come visit whenever you want to have a good time!
 
 <img src="images/the_licc_party.png" width="50%">
 <img src="images/the_licc_dance.png" width="50%">
