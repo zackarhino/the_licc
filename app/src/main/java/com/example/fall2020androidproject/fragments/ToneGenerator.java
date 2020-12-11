@@ -54,6 +54,7 @@ public class ToneGenerator {
     private float delayTimeMs = 0;
 
     private float sustain = 0.5f;
+    // Initial Volume
     private float volume = 0.5f;
 
     private static short[] noise;
@@ -248,5 +249,9 @@ public class ToneGenerator {
          * Input will range from 0..1; output is expected in the range from -1 to 1.
          */
         float apply(float in);
+    }
+
+    public void setVolume(float volume) {
+        this.volume = volume;
     }
 }
