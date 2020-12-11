@@ -1,7 +1,7 @@
 # welcome to the licc
-### a microtonal jazz joint by Zachary Allard
-
 <img src="images/the_licc.png">
+
+### a microtonal jazz joint by Zachary Allard
 
 the licc is a hot gathering spot for musicians of all skill levels, located in downtown Nowheresville, Nevada. It opened its doors in 2040.
 Although it is obviously currently closed due to the outbreak of the dastardly COVID-20 supervirus, the venue typically hosts a variety of events aimed towards a wide variety of music fans from all walks (insert bass guitar joke) of life.
