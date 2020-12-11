@@ -24,9 +24,8 @@ import com.example.fall2020androidproject.R;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link ToneFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * The ToneFragment responsible for controlling the ToneGenerator
+ * @author Zachary Allard
  */
 public class ToneFragment extends Fragment {
     Button sineButton;
@@ -36,9 +35,13 @@ public class ToneFragment extends Fragment {
 
     SeekBar volume;
     SeekBar pitch;
+    float frequency = 440;
+
+    public static final float MIN_FREQ = 110;
+    public static final float MAX_FREQ = 880;
 
     public static ToneGenerator toneGenerator;
-    public final ToneGenerator.Tone[] tone = {null};
+    public static final ToneGenerator.Tone[] tone = {null};
 
     public enum PLAY_MODES{;
         public static final int CONTINUOUS = 1;
@@ -79,12 +82,7 @@ public class ToneFragment extends Fragment {
         pitch = view.findViewById(R.id.pitch);
 
         // Listeners
-        MainActivity.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playTone(440, 1000);
-            }
-        });
+        MainActivity.fab.setOnClickListener(new OneShotListener());
         volume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -92,19 +90,32 @@ public class ToneFragment extends Fragment {
                 toneGenerator.setVolume(volume);
                 // Restart the tone if play_mode is continuous
                 if(getActivity().getPreferences(MODE_PRIVATE).getInt(getString(R.string.key_play_mode), -1) == PLAY_MODES.CONTINUOUS){
-                    startTone(440);
+                    startTone(frequency);
                 }
             }
-
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
+            public void onStartTrackingTouch(SeekBar seekBar) {}
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
 
+        pitch.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Setting range from A2 to A5
+                frequency = (((progress * MAX_FREQ) - MIN_FREQ) + MIN_FREQ) / 100f;
+                if(frequency <= MIN_FREQ){
+                    frequency = MIN_FREQ;
+                }
+
+                if(getActivity().getPreferences(MODE_PRIVATE).getInt(getString(R.string.key_play_mode), -1) == PLAY_MODES.CONTINUOUS){
+                    startTone(frequency);
+                }
             }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
         sineButton.setOnClickListener(new ButtonSelectorListener());
@@ -154,6 +165,13 @@ public class ToneFragment extends Fragment {
         }
     }
 
+    class OneShotListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            playTone(frequency, 1000);
+        }
+    }
+
     /**
      * Method to set the selected button to cut down on duplicate code
      * @param button The button to selected
@@ -177,7 +195,7 @@ public class ToneFragment extends Fragment {
      * @param frequency The frequency of the tone in Hz
      * @param duration The length of the tone in ms
      */
-    public void playTone(float frequency, int duration){
+    public static void playTone(float frequency, int duration){
         stopTone(); // Stops a tone if it is playing
         tone[0] = toneGenerator.play(frequency, duration);
     }
@@ -186,15 +204,15 @@ public class ToneFragment extends Fragment {
      * Plays a tone indefinitely
      * @param frequency The frequency of the tone in Hz
      */
-    public void startTone(float frequency){
+    public static void startTone(float frequency){
         stopTone(); // Stops a tone if it is playing
         tone[0] = toneGenerator.start(frequency);
     }
 
     /**
-     * Stops any tone that is
+     * Stops any tone that is currently playing
      */
-    public void stopTone(){
+    public static void stopTone(){
         // Ending tone if there are any playing
         if(tone[0] != null){
             tone[0].end();

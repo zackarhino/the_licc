@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+        // Stop any currently playing tones when selecting a menu/settings item
+        ToneFragment.stopTone();
+
         switch (item.getItemId()){
             case R.id.action_show_button:
                 editor.putBoolean(getString(R.string.key_show_button), !sharedPreferences.getBoolean(getString(R.string.key_show_button), true));
