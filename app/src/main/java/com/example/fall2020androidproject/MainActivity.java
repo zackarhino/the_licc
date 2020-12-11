@@ -1,14 +1,31 @@
 package com.example.fall2020androidproject;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
+import android.graphics.fonts.Font;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioTrack;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fall2020androidproject.fragments.ToneFragment;
+import com.example.fall2020androidproject.fragments.ToneGenerator;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -18,9 +35,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
-
-    private final int PERMISSION_WRITE_CALENDAR = 100;
     private AppBarConfiguration mAppBarConfiguration;
+    NavigationView navigationView;
+    NavController navController;
+    View content;
+
+    public static FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +49,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        TextView toolbarTitle = (TextView) toolbar.getChildAt(0); // Get the toolbar title
+        Typeface toolbarTypeface = ResourcesCompat.getFont(this, R.font.gingerly);
+        toolbarTitle.setTypeface(toolbarTypeface);
+        toolbarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.toolbarTitleFontSize));
+
+        content = findViewById(R.id.content);
+
+        fab = findViewById(R.id.fab);
+
+        // Default preferences
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(getString(R.string.key_show_button), true);
+        editor.putInt(getString(R.string.key_play_mode), ToneFragment.PLAY_MODES.ONE_SHOT);
+        editor.putBoolean(getString(R.string.key_party_mode), false);
+        editor.apply();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_main, R.id.nav_tone, R.id.nav_comment, R.id.nav_about)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
@@ -49,6 +86,64 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Run whenever an options menu item is selected
+     * This menu is only accessible from the ToneFragment, so all the functionality relates to that
+     * @param item The MenuItem that was selected
+     * @return boolean
+     */
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Stop any currently playing tones when selecting a menu/settings item
+        ToneFragment.stopTone();
+
+        switch (item.getItemId()){
+            case R.id.action_show_button:
+                editor.putBoolean(getString(R.string.key_show_button), !sharedPreferences.getBoolean(getString(R.string.key_show_button), true));
+                editor.apply();
+                // Setting fab visibilty to the value that was just written to the SharedPreferences
+                setFabVisibility(sharedPreferences.getBoolean(getString(R.string.key_show_button), true));
+                Toast.makeText(this, "Show button: " + sharedPreferences.getBoolean(getString(R.string.key_show_button), false), Toast.LENGTH_SHORT).show();
+                break;
+            case  R.id.action_play_mode_1:
+                // Play mode 1: Continuous
+                editor.putInt(getString(R.string.key_play_mode), ToneFragment.PLAY_MODES.CONTINUOUS);
+                editor.putBoolean(getString(R.string.key_show_button), false); // Hiding the button
+                editor.apply();
+                setFabVisibility(false);
+                break;
+            case  R.id.action_play_mode_2:
+                // Play mode 2: One Shot
+                editor.putInt(getString(R.string.key_play_mode), ToneFragment.PLAY_MODES.ONE_SHOT);
+                editor.putBoolean(getString(R.string.key_show_button), true); // Showing the button
+                editor.apply();
+                ToneFragment.setFabListener(ToneFragment.PLAY_MODES.ONE_SHOT);
+                setFabVisibility(true);
+                break;
+            case  R.id.action_play_mode_3:
+                // Play mode 3: Hold
+                editor.putInt(getString(R.string.key_play_mode), ToneFragment.PLAY_MODES.HOLD);
+                editor.putBoolean(getString(R.string.key_show_button), true); // Showing the button
+                editor.apply();
+                ToneFragment.setFabListener(ToneFragment.PLAY_MODES.HOLD);
+                break;
+            case R.id.action_party_mode:
+                // Flip the boolean
+                editor.putBoolean(getString(R.string.key_party_mode), !sharedPreferences.getBoolean(getString(R.string.key_party_mode), false));
+                editor.apply();
+                setFabVisibility(true);
+                break;
+            default:
+                Log.d("Menu", "Unrecognized menu item");
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -56,4 +151,11 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public void setFabVisibility(boolean isVisible){
+        if(isVisible){
+            fab.show();
+        }else {
+            fab.hide();
+        }
+    }
 }

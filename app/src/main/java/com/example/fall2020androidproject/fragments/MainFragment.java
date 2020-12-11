@@ -21,6 +21,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -31,6 +33,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fall2020androidproject.MainActivity;
 import com.example.fall2020androidproject.R;
 import com.example.fall2020androidproject.items.EventItem;
 
@@ -66,6 +69,13 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
     }
 
     @Override
@@ -73,6 +83,8 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        MainActivity.fab.hide();
 
         // ViewPager Code
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.menuViewPager);

@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/app_name"
+        android:text="@string/menu_main"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="@dimen/titleFontSize"
         android:textStyle="bold" />
 
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:text="@string/events"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="@dimen/subtitleFontSize"
         android:textStyle="bold" />
 
@@ -39,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:divider="@android:color/holo_blue_dark"
+        android:divider="@color/licc_dark_blue"
         android:dividerHeight="1dip"
         android:layoutAnimation="@anim/listview_layout_animation"
         android:footerDividersEnabled="true"

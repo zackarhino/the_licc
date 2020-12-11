@@ -6,12 +6,23 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <!-- -->
+    <!-- Padding/Spacing -->
     <dimen name="defaultPadding">10dp</dimen>
     <dimen name="commentAuthorHeight">48dp</dimen>
+    <dimen name="toneGeneratorButtonContainerMargins">15dp</dimen>
+    <dimen name="toneGeneratorContainerMarginBottom">40dp</dimen>
+    <dimen name="toneGeneratorButtonHeight">60dp</dimen>
+    <dimen name="toneGeneratorSpacingHeight">30dp</dimen>
+    <dimen name="toneGeneratorButtonMargins">2dp</dimen>
 
     <!-- Font Sizes -->
+    <dimen name="toolbarTitleFontSize">17sp</dimen>
     <dimen name="titleFontSize">26sp</dimen>
     <dimen name="subtitleFontSize">16sp</dimen>
     <dimen name="textFontSize">14sp</dimen>
+
+    <!-- Elevation Levels -->
+    <dimen name="elevation_ui">6dp</dimen>
+    <dimen name="elevation_tone_container">1dp</dimen>
+    <dimen name="elevation_tone_buttons">6dp</dimen>
 </resources>
