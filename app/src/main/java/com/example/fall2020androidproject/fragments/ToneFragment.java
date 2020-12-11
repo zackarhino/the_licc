@@ -158,6 +158,10 @@ public class ToneFragment extends Fragment {
                     Log.d("Selector", "Unrecognized shape button");
                     break;
             }
+            // If play mode is continuous, restart the sound
+            if(getActivity().getPreferences(MODE_PRIVATE).getInt(getString(R.string.key_play_mode), -1) == PLAY_MODES.CONTINUOUS){
+                startTone(frequency);
+            }
         }
     }
 
