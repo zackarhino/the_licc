@@ -115,29 +115,27 @@ public class MainActivity extends AppCompatActivity {
                 editor.putBoolean(getString(R.string.key_show_button), false); // Hiding the button
                 editor.apply();
                 setFabVisibility(false);
-                Toast.makeText(this, "Play mode: " + sharedPreferences.getInt(getString(R.string.key_play_mode), -1), Toast.LENGTH_SHORT).show();
                 break;
             case  R.id.action_play_mode_2:
                 // Play mode 2: One Shot
                 editor.putInt(getString(R.string.key_play_mode), ToneFragment.PLAY_MODES.ONE_SHOT);
                 editor.putBoolean(getString(R.string.key_show_button), true); // Showing the button
                 editor.apply();
+                ToneFragment.setFabListener(ToneFragment.PLAY_MODES.ONE_SHOT);
                 setFabVisibility(true);
-                Toast.makeText(this, "Play mode: " + sharedPreferences.getInt(getString(R.string.key_play_mode), -1), Toast.LENGTH_SHORT).show();
                 break;
             case  R.id.action_play_mode_3:
                 // Play mode 3: Hold
                 editor.putInt(getString(R.string.key_play_mode), ToneFragment.PLAY_MODES.HOLD);
                 editor.putBoolean(getString(R.string.key_show_button), true); // Showing the button
                 editor.apply();
-                Toast.makeText(this, "Play mode: " + sharedPreferences.getInt(getString(R.string.key_play_mode), -1), Toast.LENGTH_SHORT).show();
+                ToneFragment.setFabListener(ToneFragment.PLAY_MODES.HOLD);
                 break;
             case R.id.action_party_mode:
                 // Flip the boolean
                 editor.putBoolean(getString(R.string.key_party_mode), !sharedPreferences.getBoolean(getString(R.string.key_party_mode), false));
                 editor.apply();
                 setFabVisibility(true);
-                Toast.makeText(this, "Party mode: " + sharedPreferences.getBoolean(getString(R.string.key_party_mode), false), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Log.d("Menu", "Unrecognized menu item");

@@ -5,13 +5,11 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.os.Bundle;
-
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
-import android.os.Debug;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -35,7 +33,7 @@ public class ToneFragment extends Fragment {
 
     SeekBar volume;
     SeekBar pitch;
-    float frequency = 440;
+    static float frequency = 440;
 
     public static final float MIN_FREQ = 110;
     public static final float MAX_FREQ = 880;
@@ -81,7 +79,7 @@ public class ToneFragment extends Fragment {
         volume = view.findViewById(R.id.volume);
         pitch = view.findViewById(R.id.pitch);
 
-        // Listeners
+        // Setting listeners
         MainActivity.fab.setOnClickListener(new OneShotListener());
         volume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -107,7 +105,7 @@ public class ToneFragment extends Fragment {
                 if(frequency <= MIN_FREQ){
                     frequency = MIN_FREQ;
                 }
-
+                // Restart the tone if play_mode is continuous
                 if(getActivity().getPreferences(MODE_PRIVATE).getInt(getString(R.string.key_play_mode), -1) == PLAY_MODES.CONTINUOUS){
                     startTone(frequency);
                 }
@@ -136,11 +134,9 @@ public class ToneFragment extends Fragment {
      * This allows regular buttons to function similarly to RadioButtons
      */
     class ButtonSelectorListener implements View.OnClickListener{
-
         @SuppressLint("NonConstantResourceId")
         @Override
         public void onClick(View v) {
-
             switch (v.getId()){
                 case R.id.shapeSine:
                     setSelectedButton(sineButton);
@@ -165,13 +161,51 @@ public class ToneFragment extends Fragment {
         }
     }
 
-    class OneShotListener implements View.OnClickListener{
+    /**
+     * One Shot play mode listener for fab
+     * @author Zachary Allard
+     */
+    static class OneShotListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {
             playTone(frequency, 1000);
         }
     }
 
+    /**
+     * Hold play mode listener for fab
+     * @author Zachary Allard
+     */
+    static class HoldListener implements View.OnTouchListener {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            v.performClick();
+            if(event.getAction() == MotionEvent.ACTION_DOWN){
+                Log.d("Hold", "Touch down event");
+                startTone(frequency);
+            }else if(event.getAction() == MotionEvent.ACTION_UP) {
+                Log.d("Hold", "Touch up event");
+                stopTone();
+            }
+            return true;
+        }
+    }
+
+    // Methods
+    @SuppressLint("ClickableViewAccessibility")
+    public static void setFabListener(int listenerType){
+        // Unsetting any listeners
+        MainActivity.fab.setOnClickListener(null);
+        MainActivity.fab.setOnTouchListener(null);
+        switch (listenerType){
+            case PLAY_MODES.ONE_SHOT:
+                MainActivity.fab.setOnClickListener(new OneShotListener());
+                break;
+            case PLAY_MODES.HOLD:
+                MainActivity.fab.setOnTouchListener(new HoldListener());
+                break;
+        }
+    }
     /**
      * Method to set the selected button to cut down on duplicate code
      * @param button The button to selected
