@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     View content;
 
     public static FloatingActionButton fab;
+    public static ToneGenerator toneGenerator;
     public final ToneGenerator.Tone[] tone = {null};
 
     @Override
@@ -57,10 +58,11 @@ public class MainActivity extends AppCompatActivity {
         content = findViewById(R.id.content);
 
         fab = findViewById(R.id.fab);
-        ToneGenerator toneGenerator = new ToneGenerator();
+        toneGenerator = new ToneGenerator();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Ending tone if there are any playing
                 if(tone[0] != null){
                     tone[0].end();
                 }
